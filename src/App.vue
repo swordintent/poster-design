@@ -55,6 +55,25 @@ const handleClose = (done: () => void) => {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+:deep(.el-dialog__body) {
+  padding: 0 !important;
+}
+:deep(.el-dialog__header) {
+  padding: 10px 35px;
+  // var(--el-dialog-padding-primary)
+}
+.tool-wrap {
+  display: flex;
+  align-items: center;
+}
+// .tool-left {
+//   display: inline-flex;
+//   flex: 1;
+// }
+.slider-wrap {
+  margin-left: 35px;
+  width: 240px;
+}
 #appindex {
   min-width: 1180px;
   .viewWrap {
