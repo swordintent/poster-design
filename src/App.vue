@@ -20,6 +20,7 @@
         v-model="dialogVisible"
         title="Tips"
         width="500"
+        height="300"
         :before-close="handleClose"
     >
       <span>This is a message</span>
