@@ -16,22 +16,15 @@
       Click to open the Dialog
     </el-button>
 
-    <el-dialog
-        v-model="dialogVisible"
-        title="Tips"
-        width="500"
-        height="300"
-        zindex="100000"
-        :before-close="handleClose"
-    >
-      <span>This is a message</span>
+    <el-dialog v-model="dialogVisible" title="裁剪图片" width="80%" :before-close="handleClose" >
+      <div id="wrap"  style="height: 50vh">
+        asd
+      </div>
       <template #footer>
-        <div class="dialog-footer">
-          <el-button @click="dialogVisible = false">Cancel</el-button>
-          <el-button type="primary" @click="dialogVisible = false">
-            Confirm
-          </el-button>
-        </div>
+      <span class="dialog-footer">
+        <el-button >取消</el-button>
+        <el-button >确认</el-button>
+      </span>
       </template>
     </el-dialog>
   </div>
