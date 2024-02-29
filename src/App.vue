@@ -11,7 +11,7 @@
       <router-view />
     </div>
   </div>
-<!--  <el-button plain @click="dialogVisible = true">
+  <el-button plain @click="dialogVisible = true">
     Click to open the Dialog
   </el-button>
 
@@ -30,10 +30,10 @@
         </el-button>
       </div>
     </template>
-  </el-dialog>-->
+  </el-dialog>
 </template>
 
-<!--<script lang="ts" setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
 import { ElMessageBox } from 'element-plus'
 
@@ -48,7 +48,7 @@ const handleClose = (done: () => void) => {
         // catch error
       })
 }
-</script>-->
+</script>
 
 <style lang="less">
 #appindex {
