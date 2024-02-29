@@ -58,6 +58,7 @@ export default defineConfig({
   },
   server: {
     hmr: { overlay: false },
+    host: '0.0.0.0',
     // proxy: {
     //   '/api': {
     //     target: '',
