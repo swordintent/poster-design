@@ -1,5 +1,5 @@
 <template>
-  <teleport to="body">
+
     <div id="loginWrap">
       <!-- 未登录时显示的登录按钮 -->
       <el-button v-if="!isLoggedIn" @click="visible = true">登录/注册</el-button>
@@ -8,45 +8,45 @@
         <el-avatar :src="userInfo.avatar"></el-avatar>
         <span>{{ userInfo.nickname }}</span>
       </div>
-
+      <teleport to="body">
       <!-- 登录/注册弹窗 -->
-      <el-dialog v-model="visible" title="登录/注册">
-        <!-- 登录表单 -->
-        <div v-if="isLogin" class="form-container">
-          <el-form :model="loginForm">
-            <el-form-item label="用户名">
-              <el-input v-model="loginForm.email"></el-input>
-            </el-form-item>
-            <el-form-item label="密码">
-              <el-input type="password" v-model="loginForm.password"></el-input>
-            </el-form-item>
-          </el-form>
-          <div class="form-footer">
-            <el-button link @click="toggleForm">注册账号</el-button>
-            <el-button type="primary" @click="handleLogin">登录</el-button>
+        <el-dialog v-model="visible" title="登录/注册">
+          <!-- 登录表单 -->
+          <div v-if="isLogin" class="form-container">
+            <el-form :model="loginForm">
+              <el-form-item label="用户名">
+                <el-input v-model="loginForm.email"></el-input>
+              </el-form-item>
+              <el-form-item label="密码">
+                <el-input type="password" v-model="loginForm.password"></el-input>
+              </el-form-item>
+            </el-form>
+            <div class="form-footer">
+              <el-button link @click="toggleForm">注册账号</el-button>
+              <el-button type="primary" @click="handleLogin">登录</el-button>
+            </div>
           </div>
-        </div>
-        <!-- 注册表单 -->
-        <div v-else class="form-container">
-          <el-form :model="registerForm">
-            <el-form-item label="用户名">
-              <el-input v-model="registerForm.username"></el-input>
-            </el-form-item>
-            <el-form-item label="邮箱">
-              <el-input v-model="registerForm.email"></el-input>
-            </el-form-item>
-            <el-form-item label="密码">
-              <el-input type="password" v-model="registerForm.password"></el-input>
-            </el-form-item>
-          </el-form>
-          <div class="form-footer">
-            <el-button link @click="toggleForm">已有账号？</el-button>
-            <el-button type="primary" @click="handleRegister">注册</el-button>
+          <!-- 注册表单 -->
+          <div v-else class="form-container">
+            <el-form :model="registerForm">
+              <el-form-item label="用户名">
+                <el-input v-model="registerForm.username"></el-input>
+              </el-form-item>
+              <el-form-item label="邮箱">
+                <el-input v-model="registerForm.email"></el-input>
+              </el-form-item>
+              <el-form-item label="密码">
+                <el-input type="password" v-model="registerForm.password"></el-input>
+              </el-form-item>
+            </el-form>
+            <div class="form-footer">
+              <el-button link @click="toggleForm">已有账号？</el-button>
+              <el-button type="primary" @click="handleRegister">注册</el-button>
+            </div>
           </div>
-        </div>
-      </el-dialog>
+        </el-dialog>
+      </teleport>
     </div>
-  </teleport>
 </template>
 
 <script setup>
