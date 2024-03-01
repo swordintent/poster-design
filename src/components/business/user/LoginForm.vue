@@ -12,7 +12,7 @@
       :before-close="handleClose"
     >
         <div>
-          <div id="wrap">
+          <div>
             <div class="slider-wrap">
               <el-tabs v-model="active" @tab-click="handleClick">
                 <el-tab-pane label="账号密码登录" name="0">
