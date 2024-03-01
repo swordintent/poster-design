@@ -7,7 +7,7 @@
     <el-dialog
       title="登录"
       v-model="dialogVisible"
-      width="80%"
+      width="30%"
       :before-close="handleClose"
     >
         <div id="wrap"  style="height: 50vh">
