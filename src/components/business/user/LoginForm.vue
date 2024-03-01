@@ -55,8 +55,8 @@ const handleClose = (done: () => void) => {
   align-items: center;
 }
 
-.slider-wrap {
-  margin-left: 35px;
-  width: 240px;
-}
+//.slider-wrap {
+//  margin-left: 35px;
+//  width: 240px;
+//}
 </style>
