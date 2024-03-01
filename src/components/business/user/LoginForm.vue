@@ -1,99 +1,98 @@
 <template>
-  <div id="login_wrap">
-    <el-button plain @click="dialogVisible = true">
-      点击登录
-    </el-button>
   <div>
-    <el-dialog
-      title="登录"
-      v-model="dialogVisible"
-      width="30%"
-      :before-close="handleClose"
-    >
-        <div id="wrap">
-            <div class="slider-wrap">
-              <el-tabs v-model="active" @tab-click="handleClick">
-                <el-tab-pane label="账号密码登录" name="0">
-                  <el-form :model="form" :rules="rules" ref="form" label-width="80px">
-                    <el-form-item label="用户名" prop="username">
-                      <el-input v-model="form.username"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码" prop="password">
-                      <el-input type="password" v-model="form.password"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                      <el-button type="primary" @click="login">登录</el-button>
-                    </el-form-item>
-                  </el-form>
-                </el-tab-pane>
-                <el-tab-pane label="手机验证码登录" name="1">
-                  <el-form :model="form" :rules="rules" ref="form" label-width="80px">
-                    <el-form-item label="手机号" prop="phone">
-                      <el-input v-model="form.phone"></el-input>
-                    </el-form-item>
-                    <el-form-item label="验证码" prop="code">
-                      <el-input v-model="form.code"></el-input>
-                      <el-button type="primary" @click="getCode" :disabled="codeDisabled">{{ codeText }}</el-button>
-                    </el-form-item>
-                    <el-form-item>
-                      <el-button type="primary" @click="login">登录</el-button>
-                    </el-form-item>
-                  </el-form>
-                </el-tab-pane>
-              </el-tabs>
-            </div>
+    <!-- 未登录时显示的登录按钮 -->
+    <el-button v-if="!isLoggedIn" @click="visible = true">登录/注册</el-button>
+    <!-- 登录后显示的用户信息 -->
+    <div v-else class="user-info">
+      <el-avatar :src="userInfo.avatar"></el-avatar>
+      <span>{{ userInfo.nickname }}</span>
+    </div>
+
+    <!-- 登录/注册弹窗 -->
+    <el-dialog :visible.sync="visible" title="登录/注册">
+      <!-- 登录表单 -->
+      <div v-if="isLogin" class="form-container">
+        <el-form :model="loginForm">
+          <el-form-item label="用户名">
+            <el-input v-model="loginForm.username"></el-input>
+          </el-form-item>
+          <el-form-item label="密码">
+            <el-input type="password" v-model="loginForm.password"></el-input>
+          </el-form-item>
+        </el-form>
+        <div class="form-footer">
+          <el-button type="text" @click="toggleForm">注册账号</el-button>
+          <el-button type="primary" @click="handleLogin">登录</el-button>
         </div>
+      </div>
+      <!-- 注册表单 -->
+      <div v-else class="form-container">
+        <el-form :model="registerForm">
+          <el-form-item label="用户名">
+            <el-input v-model="registerForm.username"></el-input>
+          </el-form-item>
+          <el-form-item label="邮箱">
+            <el-input v-model="registerForm.email"></el-input>
+          </el-form-item>
+          <el-form-item label="密码">
+            <el-input type="password" v-model="registerForm.password"></el-input>
+          </el-form-item>
+        </el-form>
+        <div class="form-footer">
+          <el-button type="text" @click="toggleForm">已有账号？</el-button>
+          <el-button type="primary" @click="handleRegister">注册</el-button>
+        </div>
+      </div>
     </el-dialog>
-  </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
-import { ElMessageBox} from 'element-plus'
+<script setup>
+import { ref, reactive } from 'vue';
+import { ElAvatar } from 'element-plus';
 
-const dialogVisible = ref(false)
+const visible = ref(false);
+const isLogin = ref(true);
+const isLoggedIn = ref(false);
+const userInfo = reactive({ avatar: '', nickname: '' });
 
-const handleClose = (done: () => void) => {
-  ElMessageBox.confirm('Are you sure to close this dialog?')
-      .then(() => {
-        done()
-      })
-      .catch(() => {
-        // catch error
-      })
-}
+const loginForm = reactive({ username: '', password: '' });
+const registerForm = reactive({ username: '', email: '', password: '' });
+
+const toggleForm = () => {
+  isLogin.value = !isLogin.value;
+};
+
+const handleLogin = () => {
+  // 实现登录逻辑
+  console.log('登录信息', loginForm);
+  // 假设登录成功
+  isLoggedIn.value = true;
+  userInfo.avatar = 'path/to/avatar.jpg'; // 示例头像路径
+  userInfo.nickname = '用户昵称'; // 示例昵称
+  visible.value = false;
+};
+
+const handleRegister = () => {
+  // 实现注册逻辑
+  console.log('注册信息', registerForm);
+  // 假设注册成功
+  visible.value = false;
+};
 </script>
-<style scoped lang="less">
-#login_wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-#wrap {
-  //height: 50vh;
+
+<style scoped>
+.user-info {
   display: flex;
   align-items: center;
-  justify-content: center;
-  //.el-tabs__header {
-  //  border: none;
-  //}
-  //.el-tabs__item {
-  //  padding: 0 20px;
-  //}
-  //.el-tabs__content {
-  //  padding: 20px;
-  //}
-  //.el-tabs__pane {
-  //  padding: 20px;
-  //}
-
 }
-
-//.slider-wrap {
-//  margin-left: 35px;
-//  width: 240px;
-//}
+.user-info span {
+  margin-left: 10px;
+}
+.form-container {
+  margin-bottom: 20px;
+}
+.form-footer {
+  text-align: right;
+}
 </style>
