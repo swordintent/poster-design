@@ -82,6 +82,11 @@ const handleRegister = () => {
 </script>
 
 <style scoped>
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #loginWrap {
   position: absolute;
   top: 0;
