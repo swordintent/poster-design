@@ -49,7 +49,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import { ElAvatar,ElDialog, ElMessageBox } from 'element-plus';
+import { ElAvatar,ElDialog, ElMessageBox , ElForm, ElFormItem} from 'element-plus';
 import api from "@/api";
 
 const visible = ref(false);
