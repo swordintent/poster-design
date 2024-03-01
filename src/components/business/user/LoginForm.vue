@@ -108,13 +108,11 @@ const handleRegister = () => {
 </script>
 
 <style lang="less" scoped >
-//#loginWrap {
-//  position: absolute;
-//  top: 0;
-//  left: 0;
-//  right: 0;
-//  bottom: 0;
-//}
+#loginWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .user-info {
   display: flex;
   align-items: center;
