@@ -59,7 +59,7 @@ axios.interceptors.response.use(
       store.commit('changeOnline', false)
     }
 
-    if (res.data.result && res.data.code === 200) {
+    if (res.data.data && res.data.code === 200) {
         const authorization = res.headers.authorization;
         if (authorization) {
             localStorage.setItem('xp_token', authorization);
