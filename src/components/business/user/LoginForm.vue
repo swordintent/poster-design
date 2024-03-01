@@ -92,7 +92,7 @@ const handleLogin = () => {
     }
   }).catch(error => {
     // 登录失败，处理错误
-    ElMessageBox.alert("登录失败，网络错误", "提示", {
+    ElMessageBox.alert("登录失败，网络错误" + error, "提示", {
       confirmButtonText: "确定",
       type: "warning",
     });
