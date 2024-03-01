@@ -11,7 +11,7 @@
       <router-view />
     </div>
   </div>
-  <div>
+  <div id="login_wrap">
     <el-button plain @click="dialogVisible = true">
       Click to open the Dialog
     </el-button>
@@ -49,10 +49,10 @@ const handleClose = (done: () => void) => {
 </script>
 
 <style lang="less">
-//#test {
-//  display: flex;
-//  align-items: center;
-//}
+#login_wrap {
+  display: flex;
+  align-items: center;
+}
 //:deep(.el-dialog__body) {
 //  padding: 0 !important;
 //}
