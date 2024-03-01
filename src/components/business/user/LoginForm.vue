@@ -55,18 +55,18 @@ const handleClose = (done: () => void) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  .el-tabs__header {
-    border: none;
-  }
-  .el-tabs__item {
-    padding: 0 20px;
-  }
-  .el-tabs__content {
-    padding: 20px;
-  }
-  .el-tabs__pane {
-    padding: 20px;
-  }
+  //.el-tabs__header {
+  //  border: none;
+  //}
+  //.el-tabs__item {
+  //  padding: 0 20px;
+  //}
+  //.el-tabs__content {
+  //  padding: 20px;
+  //}
+  //.el-tabs__pane {
+  //  padding: 20px;
+  //}
 
 }
 
