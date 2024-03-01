@@ -14,7 +14,7 @@
       <div v-if="isLogin" class="form-container">
         <el-form :model="loginForm">
           <el-form-item label="用户名">
-            <el-input v-model="loginForm.username"></el-input>
+            <el-input v-model="loginForm.email"></el-input>
           </el-form-item>
           <el-form-item label="密码">
             <el-input type="password" v-model="loginForm.password"></el-input>
@@ -49,7 +49,8 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import { ElAvatar,ElDialog } from 'element-plus';
+import { ElAvatar,ElDialog, ElMessageBox } from 'element-plus';
+import api from "@/api";
 
 const visible = ref(false);
 const isLogin = ref(true);
@@ -66,11 +67,36 @@ const toggleForm = () => {
 const handleLogin = () => {
   // 实现登录逻辑
   console.log('登录信息', loginForm);
-  // 假设登录成功
-  isLoggedIn.value = true;
-  userInfo.avatar = 'path/to/avatar.jpg'; // 示例头像路径
-  userInfo.nickname = '用户昵称'; // 示例昵称
-  visible.value = false;
+  api.login.login({
+    mail: loginForm.email,
+    password: loginForm.password,
+  }).then(response => {
+    // 登录成功，处理响应数据
+    console.log('登录成功', response);
+    // 检查响应头中的authorization
+    if (response.headers.authorization) {
+      localStorage.setItem('authorization', response.headers.authorization);
+      isLoggedIn.value = true;
+      userInfo.avatar = 'path/to/avatar.jpg'; // 示例头像路径
+      userInfo.nickname = '用户昵称'; // 示例昵称
+      visible.value = false;
+    }else {
+      ElMessageBox.confirm("登录失败，用户名或密码错误", "提示", {
+        confirmButtonText: "确定",
+        type: "warning",
+      }).then(() => {
+        console.log("确定");
+      });
+    }
+  }).catch(error => {
+    // 登录失败，处理错误
+    ElMessageBox.confirm("登录失败，网络错误", "提示", {
+      confirmButtonText: "确定",
+      type: "warning",
+    }).then(() => {
+      console.log("确定");
+    });
+  })
 };
 
 const handleRegister = () => {
@@ -79,6 +105,29 @@ const handleRegister = () => {
   // 假设注册成功
   visible.value = false;
 };
+
+// 注册功能
+function register(mail, password) {
+  const url = '/register';
+  const params = { mail, password };
+  const type = 'post'; // 假设注册使用POST请求
+
+  return fetch(url, params, type)
+      .then(response => {
+        // 注册成功，处理响应数据
+        console.log('注册成功', response);
+        // 检查响应头中的authorization
+        if (response.headers.authorization) {
+          localStorage.setItem('authorization', response.headers.authorization);
+        }
+        // 根据业务逻辑处理其他事项
+      })
+      .catch(error => {
+        // 注册失败，处理错误
+        console.error('注册失败', error);
+      });
+}
+
 </script>
 
 <style scoped>

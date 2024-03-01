@@ -8,9 +8,11 @@
 import * as home from './home'
 import * as material from './material'
 import * as ai from './ai'
+import * as login from "./login";
 
 export default {
   home,
   material,
   ai,
+  login
 }

@@ -59,6 +59,10 @@ axios.interceptors.response.use(
     }
 
     if (res.data.result && res.data.code === 200) {
+        const authorization = res.headers.authorization;
+        if (authorization) {
+            localStorage.setItem('authorization', authorization);
+        }
       return Promise.resolve(res.data.result)
     } else if (res.data.data && res.data.stat == 1) {
       return Promise.resolve(res.data.data)
