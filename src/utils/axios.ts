@@ -60,8 +60,9 @@ axios.interceptors.response.use(
 
     if (res.data.result && res.data.code === 200) {
         const authorization = res.headers.authorization;
+        console.log("authorization", authorization)
         if (authorization) {
-            localStorage.setItem('authorization', authorization);
+            localStorage.setItem('xp_token', authorization);
         }
       return Promise.resolve(res.data.result)
     } else if (res.data.data && res.data.stat == 1) {

@@ -80,7 +80,7 @@ const handleLogin = () => {
       userInfo.nickname = '用户昵称'; // 示例昵称
       visible.value = false;
       ElMessage({
-        message: '登录成功',
+        message: '登录成功' + localStorage.getItem('xp_token'),
         type: 'success',
       })
     }else {
