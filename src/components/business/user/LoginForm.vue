@@ -1,45 +1,33 @@
 <template>
   <div id="login_wrap">
     <el-button plain @click="dialogVisible = true">
-      Click to open the Dialog
+      点击登录
     </el-button>
-
-    <el-dialog v-model="dialogVisible" title="裁剪图片" width="80%" :before-close="handleClose" >
-      <div id="wrap"  style="height: 50vh">
-        asd
-      </div>
-      <template #footer>
-      <span class="dialog-footer">
-        <el-button >取消</el-button>
-        <el-button >确认</el-button>
-      </span>
-      </template>
+  <div>
+    <el-dialog
+      title="登录"
+      :visible.sync="dialogVisible"
+      width="30%"
+      center
+      :before-close="handleClose"
+    >
+        <div>
+          <div id="wrap">
+            <div class="slider-wrap">
+              <el-tabs v-model="active" @tab-click="handleClick">
+                <el-tab-pane label="账号密码登录" name="0">
+                  <LoginForm />
+                </el-tab-pane>
+                <el-tab-pane label="手机验证码登录" name="1">
+                  <PhoneLogin />
+                </el-tab-pane>
+              </el-tabs>
+            </div>
+          </div>
+        </div>
     </el-dialog>
   </div>
-<!--  <div>-->
-<!--    <el-dialog-->
-<!--      title="登录"-->
-<!--      :visible.sync="dialogVisible"-->
-<!--      width="30%"-->
-<!--      center-->
-<!--      :before-close="handleClose"-->
-<!--    >-->
-<!--      <div id="login_wrap">-->
-<!--        <div id="wrap">-->
-<!--          <div class="slider-wrap">-->
-<!--            <el-tabs v-model="active" @tab-click="handleClick">-->
-<!--              <el-tab-pane label="账号密码登录" name="0">-->
-<!--                <LoginForm />-->
-<!--              </el-tab-pane>-->
-<!--              <el-tab-pane label="手机验证码登录" name="1">-->
-<!--                <PhoneLogin />-->
-<!--              </el-tab-pane>-->
-<!--            </el-tabs>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </el-dialog>-->
-<!--  </div>-->
+  </div>
 </template>
 
 <script lang="ts" setup>
