@@ -10,7 +10,7 @@ import store from '@/store'
 import app_config from '@/config'
 
 axios.defaults.timeout = 30000
-axios.defaults.headers.authorization = '';
+axios.defaults.headers.authorization = 'default';
 // const version = app_config.VERSION;
 const baseUrl = app_config.API_URL
 
