@@ -10,7 +10,7 @@
       width="30%"
       :before-close="handleClose"
     >
-        <div id="wrap"  style="height: 50vh">
+        <div id="wrap">
             <div class="slider-wrap">
               <el-tabs v-model="active" @tab-click="handleClick">
                 <el-tab-pane label="账号密码登录" name="0">
@@ -51,6 +51,7 @@ const handleClose = (done: () => void) => {
   bottom: 0;
 }
 #wrap {
+  //height: 50vh;
   display: flex;
   align-items: center;
 }
