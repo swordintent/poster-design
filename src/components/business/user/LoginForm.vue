@@ -19,7 +19,6 @@
                   <LoginForm />
                 </el-tab-pane>
                 <el-tab-pane label="手机验证码登录" name="1">
-                  <PhoneLogin />
                 </el-tab-pane>
               </el-tabs>
             </div>
@@ -32,7 +31,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { ElMessageBox, ElDialog, ElTabPane, ElTabs, PhoneLogin } from 'element-plus'
+import { ElMessageBox, ElDialog, ElTabPane, ElTabs } from 'element-plus'
 
 const dialogVisible = ref(false)
 
