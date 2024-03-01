@@ -50,8 +50,11 @@ const handleClose = (done: () => void) => {
 
 <style lang="less">
 #login_wrap {
-  display: flex;
-  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 //:deep(.el-dialog__body) {
 //  padding: 0 !important;
