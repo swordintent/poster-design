@@ -11,7 +11,7 @@
       <router-view />
     </div>
   </div>
-  <div id="test">
+  <div>
     <el-button plain @click="dialogVisible = true">
       Click to open the Dialog
     </el-button>
@@ -49,19 +49,18 @@ const handleClose = (done: () => void) => {
 </script>
 
 <style lang="less">
-#test {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-:deep(.el-dialog__body) {
-  padding: 0 !important;
-}
-:deep(.el-dialog__header) {
-  padding: 10px 35px;
-  // var(--el-dialog-padding-primary)
-}
-.tool-wrap {
+//#test {
+//  display: flex;
+//  align-items: center;
+//}
+//:deep(.el-dialog__body) {
+//  padding: 0 !important;
+//}
+//:deep(.el-dialog__header) {
+//  padding: 10px 35px;
+//  // var(--el-dialog-padding-primary)
+//}
+.wrap {
   display: flex;
   align-items: center;
 }
