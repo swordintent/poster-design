@@ -50,6 +50,7 @@ axios.interceptors.response.use(
 
     // 接口规则：只有正确code为200时返回result结果对象，错误返回整个结果对象
 
+    console.log("authorization", res)
     if (!res.data) {
       return Promise.reject(res)
     }
@@ -59,7 +60,6 @@ axios.interceptors.response.use(
     }
 
     if (res.data.result && res.data.code === 200) {
-        console.log("authorization", res.headers)
         const authorization = res.headers.authorization;
         if (authorization) {
             localStorage.setItem('xp_token', authorization);
