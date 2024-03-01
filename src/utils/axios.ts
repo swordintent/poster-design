@@ -46,7 +46,6 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
   (res: Type.Object) => {
-      console.log("authorization", res.headers)
     // store.dispatch('hideLoading');
 
     // 接口规则：只有正确code为200时返回result结果对象，错误返回整个结果对象
@@ -60,6 +59,7 @@ axios.interceptors.response.use(
     }
 
     if (res.data.result && res.data.code === 200) {
+        console.log("authorization", res.headers)
         const authorization = res.headers.authorization;
         if (authorization) {
             localStorage.setItem('xp_token', authorization);
