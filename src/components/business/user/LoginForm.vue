@@ -49,7 +49,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import { ElAvatar,ElDialog, ElMessageBox , ElForm, ElFormItem} from 'element-plus';
+import { ElAvatar,ElDialog, ElMessageBox , ElForm, ElFormItem, ElMessage} from 'element-plus';
 import api from "@/api";
 
 const visible = ref(false);
@@ -80,21 +80,21 @@ const handleLogin = () => {
       userInfo.avatar = 'path/to/avatar.jpg'; // 示例头像路径
       userInfo.nickname = '用户昵称'; // 示例昵称
       visible.value = false;
+      ElMessage({
+        message: '登录成功',
+        type: 'success',
+      })
     }else {
-      ElMessageBox.confirm("登录失败，用户名或密码错误", "提示", {
+      ElMessageBox.alert("登录失败，用户名或密码错误", "提示", {
         confirmButtonText: "确定",
         type: "warning",
-      }).then(() => {
-        console.log("确定");
       });
     }
   }).catch(error => {
     // 登录失败，处理错误
-    ElMessageBox.confirm("登录失败，网络错误", "提示", {
+    ElMessageBox.alert("登录失败，网络错误", "提示", {
       confirmButtonText: "确定",
       type: "warning",
-    }).then(() => {
-      console.log("确定");
     });
   })
 };
