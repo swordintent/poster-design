@@ -6,6 +6,7 @@
  * @LastEditTime: 2023-12-11 12:40:59
 -->
 <template>
+  <LoginForm />
   <div class="top-title"><el-input v-model="title" placeholder="未命名的设计" class="input-wrap" /></div>
   <div class="top-icon-wrap">
     <template v-if="tempEditing">
@@ -38,9 +39,10 @@ import copyRight from './CopyRight.vue'
 import _config from '@/config'
 import useConfirm from '@/common/methods/confirm'
 import wGroup from '@/components/modules/widgets/wGroup/wGroup.vue'
+import LoginForm from "@/components/business/user/LoginForm.vue";
 
 export default defineComponent({
-  components: { copyRight, SaveImage },
+  components: {LoginForm, copyRight, SaveImage },
   props: ['modelValue'],
   emits: ['change', 'update:modelValue'],
   setup(props, context) {

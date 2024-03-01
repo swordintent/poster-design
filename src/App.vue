@@ -11,17 +11,9 @@
       <router-view />
     </div>
   </div>
-  <LoginForm />
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
-import LoginForm from '@/components/business/user/LoginForm.vue'
-
-export default defineComponent({
-  components: {LoginForm}
-})
-
 
 </script>
 <style lang="less">
