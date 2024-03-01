@@ -60,7 +60,7 @@ const handleClose = (done: () => void) => {
 //  padding: 10px 35px;
 //  // var(--el-dialog-padding-primary)
 //}
-.wrap {
+#wrap {
   display: flex;
   align-items: center;
 }
