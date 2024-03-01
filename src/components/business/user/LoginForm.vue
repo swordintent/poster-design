@@ -6,13 +6,11 @@
   <div>
     <el-dialog
       title="登录"
-      :visible.sync="dialogVisible"
-      width="30%"
-      center
+      v-model="dialogVisible"
+      width="80%"
       :before-close="handleClose"
     >
-        <div>
-          <div>
+        <div id="wrap"  style="height: 50vh">
             <div class="slider-wrap">
               <el-tabs v-model="active" @tab-click="handleClick">
                 <el-tab-pane label="账号密码登录" name="0">
@@ -22,7 +20,6 @@
                 </el-tab-pane>
               </el-tabs>
             </div>
-          </div>
         </div>
     </el-dialog>
   </div>
