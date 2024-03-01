@@ -9,7 +9,7 @@
     </div>
 
     <!-- 登录/注册弹窗 -->
-    <el-dialog :visible.sync="visible" title="登录/注册">
+    <el-dialog v-model="visible" title="登录/注册">
       <!-- 登录表单 -->
       <div v-if="isLogin" class="form-container">
         <el-form :model="loginForm">
@@ -49,7 +49,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import { ElAvatar } from 'element-plus';
+import { ElAvatar,ElDialog } from 'element-plus';
 
 const visible = ref(false);
 const isLogin = ref(true);
