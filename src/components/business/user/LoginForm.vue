@@ -74,7 +74,7 @@ const handleLogin = () => {
     // 登录成功，处理响应数据
     console.log('登录成功', response);
     // 检查响应头中的authorization
-    if (response.code === 200) {
+    if (response.code === 0) {
       isLoggedIn.value = true;
       userInfo.avatar = 'path/to/avatar.jpg'; // 示例头像路径
       userInfo.nickname = '用户昵称'; // 示例昵称
