@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="loginWrap">
     <!-- 未登录时显示的登录按钮 -->
     <el-button v-if="!isLoggedIn" @click="visible = true">登录/注册</el-button>
     <!-- 登录后显示的用户信息 -->
@@ -82,6 +82,13 @@ const handleRegister = () => {
 </script>
 
 <style scoped>
+#loginWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .user-info {
   display: flex;
   align-items: center;
