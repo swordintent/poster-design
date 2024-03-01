@@ -6,8 +6,8 @@
  * @LastEditTime: 2023-12-11 12:40:59
 -->
 <template>
-  <LoginForm />
   <div class="top-title"><el-input v-model="title" placeholder="未命名的设计" class="input-wrap" /></div>
+  <LoginForm />
   <div class="top-icon-wrap">
     <template v-if="tempEditing">
       <span style="color: #999; font-size: 14px; margin-right: 0.5rem">{{ stateBollean ? '启用' : '停用' }}</span> <el-switch v-model="stateBollean" @change="stateChange" />
