@@ -74,8 +74,7 @@ const handleLogin = () => {
     // 登录成功，处理响应数据
     console.log('登录成功', response);
     // 检查响应头中的authorization
-    if (response.headers.authorization) {
-      localStorage.setItem('authorization', response.headers.authorization);
+    if (response.code === 200) {
       isLoggedIn.value = true;
       userInfo.avatar = 'path/to/avatar.jpg'; // 示例头像路径
       userInfo.nickname = '用户昵称'; // 示例昵称
@@ -105,28 +104,6 @@ const handleRegister = () => {
   // 假设注册成功
   visible.value = false;
 };
-
-// 注册功能
-function register(mail, password) {
-  const url = '/register';
-  const params = { mail, password };
-  const type = 'post'; // 假设注册使用POST请求
-
-  return fetch(url, params, type)
-      .then(response => {
-        // 注册成功，处理响应数据
-        console.log('注册成功', response);
-        // 检查响应头中的authorization
-        if (response.headers.authorization) {
-          localStorage.setItem('authorization', response.headers.authorization);
-        }
-        // 根据业务逻辑处理其他事项
-      })
-      .catch(error => {
-        // 注册失败，处理错误
-        console.error('注册失败', error);
-      });
-}
 
 </script>
 
