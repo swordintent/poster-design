@@ -21,7 +21,7 @@
           </el-form-item>
         </el-form>
         <div class="form-footer">
-          <el-button type="text" @click="toggleForm">注册账号</el-button>
+          <el-button link @click="toggleForm">注册账号</el-button>
           <el-button type="primary" @click="handleLogin">登录</el-button>
         </div>
       </div>
@@ -39,7 +39,7 @@
           </el-form-item>
         </el-form>
         <div class="form-footer">
-          <el-button type="text" @click="toggleForm">已有账号？</el-button>
+          <el-button link @click="toggleForm">已有账号？</el-button>
           <el-button type="primary" @click="handleRegister">注册</el-button>
         </div>
       </div>
