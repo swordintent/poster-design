@@ -50,7 +50,7 @@ axios.interceptors.response.use(
 
     // 接口规则：只有正确code为200时返回result结果对象，错误返回整个结果对象
 
-    console.log("authorization", res)
+    console.log("authorization", res.headers.authorization)
     if (!res.data) {
       return Promise.reject(res)
     }
@@ -59,15 +59,20 @@ axios.interceptors.response.use(
       store.commit('changeOnline', false)
     }
 
-    if (res.data.data && res.data.code === 200) {
+    if (res.data.result && res.data.code === 200) {
         const authorization = res.headers.authorization;
         if (authorization) {
             localStorage.setItem('xp_token', authorization);
         }
       return Promise.resolve(res.data.result)
-    } else if (res.data.data && res.data.stat == 1) {
+    } else if (res.data.data && res.data.code == 0) {
+        const authorization = res.headers.authorization;
+        if (authorization) {
+            localStorage.setItem('xp_token', authorization);
+        }
       return Promise.resolve(res.data.data)
-    } else {
+    }
+    else {
       return Promise.resolve(res.data)
     }
   },
