@@ -11,70 +11,20 @@
       <router-view />
     </div>
   </div>
-  <div id="login_wrap">
-    <el-button plain @click="dialogVisible = true">
-      Click to open the Dialog
-    </el-button>
-
-    <el-dialog v-model="dialogVisible" title="裁剪图片" width="80%" :before-close="handleClose" >
-      <div id="wrap"  style="height: 50vh">
-        asd
-      </div>
-      <template #footer>
-      <span class="dialog-footer">
-        <el-button >取消</el-button>
-        <el-button >确认</el-button>
-      </span>
-      </template>
-    </el-dialog>
-  </div>
-
+  <LoginForm />
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
-import { ElMessageBox, ElDialog } from 'element-plus'
+<script lang="ts">
+import {defineComponent} from "vue";
+import LoginForm from '@/components/business/user/LoginForm.vue'
 
-const dialogVisible = ref(false)
+export default defineComponent({
+  components: {LoginForm}
+})
 
-const handleClose = (done: () => void) => {
-  ElMessageBox.confirm('Are you sure to close this dialog?')
-      .then(() => {
-        done()
-      })
-      .catch(() => {
-        // catch error
-      })
-}
+
 </script>
-
 <style lang="less">
-#login_wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-//:deep(.el-dialog__body) {
-//  padding: 0 !important;
-//}
-//:deep(.el-dialog__header) {
-//  padding: 10px 35px;
-//  // var(--el-dialog-padding-primary)
-//}
-#wrap {
-  display: flex;
-  align-items: center;
-}
-// .tool-left {
-//   display: inline-flex;
-//   flex: 1;
-// }
-.slider-wrap {
-  margin-left: 35px;
-  width: 240px;
-}
 #appindex {
   min-width: 1180px;
   .viewWrap {
