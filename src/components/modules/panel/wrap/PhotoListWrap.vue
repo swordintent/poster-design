@@ -62,6 +62,7 @@ export default {
     })
 
     computed(() => {
+      console.log('Computed property is being executed');
       return store.getters.online;
     });
 
