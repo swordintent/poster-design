@@ -88,6 +88,7 @@ function setToLogin(response) {
   userInfo.avatar = response.avatar ? response.avatar : 'path/to/avatar.jpg'; // 示例头像路径
   userInfo.name = response.username ? response.username :'用户'; // 示例昵称
   visible.value = false;
+  console.log('changeOnlineSetting');
   store.commit('changeOnline', true);
 }
 
