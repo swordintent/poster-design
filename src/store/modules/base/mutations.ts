@@ -32,6 +32,7 @@ export default {
   },
   changeUser(state: Type.Object, name: string) {
     state.user.name = name
+    console.log("changeUser", state.user);
     // state.user = Object.assign({}, state.user)
     state.user = { ...state.user }
     localStorage.setItem('username', name)
