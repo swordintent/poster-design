@@ -16,4 +16,7 @@ export default {
   setFonts(store: Iprops, list: Type.Object) {
     store.state.fonts = list
   },
+  toggleLoginDialog(props: Iprops, status: boolean) {
+    props.commit('setShowLoginDialog', status)
+  }
 }

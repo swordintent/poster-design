@@ -55,7 +55,6 @@ import { ElAvatar,ElDialog, ElMessageBox , ElForm, ElFormItem, ElMessage} from '
 import api from "@/api";
 import { useStore } from 'vuex'
 
-const visible = ref(false);
 const isLogin = ref(true);
 const isLoggedIn = ref(false);
 const userInfo = reactive({ avatar: '', name: '' });
@@ -78,6 +77,15 @@ const checkLoginStatus = () => {
     }
   });
 };
+
+const visible = computed({
+  get() {
+    return store.state.showLoginDialog;
+  },
+  set(value) {
+    store.dispatch('toggleLoginDialog', value);
+  },
+});
 
 function setToLogin(response) {
   isLoggedIn.value = true;

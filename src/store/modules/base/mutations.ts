@@ -30,6 +30,9 @@ export default {
   changeOnline(state: Type.Object, status: string) {
     state.online = status
   },
+  setShowLoginDialog(state: Type.Object, status: string) {
+    state.showLoginDialog = status
+  },
   changeUser(state: Type.Object, name: string) {
     state.user.name = name
     console.log("changeUser", state.user);

@@ -21,6 +21,7 @@ const all = {
     tempEditing: false, // 管理员是否正在编辑模板
     fonts: [], // 缓存字体列表
     app: null, // 抠图服务
+    showLoginDialog: false, // 登录弹窗
   },
   getters: {
     online: (state: Type.Object) => {
