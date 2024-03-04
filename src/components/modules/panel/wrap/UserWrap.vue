@@ -75,13 +75,16 @@ export default defineComponent({
       loading = true
       page += 1
       api.material.getMyPhoto({ page }).then(({ list }: any) => {
-        list.length <= 0 ? (state.isDone = true) : (state.imgList = state.imgList.concat(list))
+        if (list.length <= 0) {
+          state.isDone = true;
+          state.imgList = [];
+        } else {
+          state.imgList = state.imgList.concat(list)
+        }
         setTimeout(() => {
           loading = false
           console.log("state.imgList", state.imgList);
-          if(state.imgList.length > 0){
-            checkHeight(state.imgListRef.getRef(), load)
-          }
+          checkHeight(state.imgListRef.getRef(), load)
         }, 100)
       })
     }
