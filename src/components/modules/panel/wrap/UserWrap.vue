@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, watch, nextTick, ref, onMounted } from 'vue'
+import { defineComponent, reactive, toRefs, watch, nextTick, ref, onMounted, computed } from 'vue'
 import { ElTabPane, ElTabs } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
@@ -62,6 +62,10 @@ export default defineComponent({
     let page = 0
     let listPage = 0
 
+    computed(() => {
+      console.log('Computed property is being executed');
+      return store.getters.online;
+    });
     const load = (init: boolean) => {
       console.log("user resource loading status", loading)
       if (init) {

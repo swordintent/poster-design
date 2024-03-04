@@ -61,11 +61,6 @@ export default {
       }
     })
 
-    computed(() => {
-      console.log('Computed property is being executed');
-      return store.getters.online;
-    });
-
     const selectImg = async (index, list) => {
       const item = list ? list[index] : state.recommendImgList[index]
       store.commit('setShowMoveable', false) // 清理掉上一次的选择
