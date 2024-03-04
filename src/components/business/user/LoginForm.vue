@@ -6,7 +6,7 @@
       <!-- 登录后显示的用户信息 -->
       <div v-else class="user-info">
         <el-avatar :src="userInfo.avatar"></el-avatar>
-        <span>{{ userInfo.nickname }}</span>
+        <span>{{ userInfo.name }}</span>
       </div>
       <teleport to="body">
       <!-- 登录/注册弹窗 -->
@@ -50,22 +50,29 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, computed, onMounted } from 'vue';
 import { ElAvatar,ElDialog, ElMessageBox , ElForm, ElFormItem, ElMessage} from 'element-plus';
 import api from "@/api";
+import { useStore } from 'vuex'
 
 const visible = ref(false);
 const isLogin = ref(true);
 const isLoggedIn = ref(false);
-const userInfo = reactive({ avatar: '', nickname: '' });
+const userInfo = reactive({ avatar: '', name: '' });
 
 const loginForm = reactive({ username: '', password: '' });
 const registerForm = reactive({ username: '', email: '', password: '' });
-
+const store = useStore();
 onMounted(() => {
   checkLoginStatus();
 });
 
+computed(() => {
+  // online(){
+  //
+  // }
+  console.log("loginForm listen ", loginForm);
+});
 const toggleForm = () => {
   isLogin.value = !isLogin.value;
 };
@@ -82,8 +89,9 @@ const checkLoginStatus = () => {
 function setToLogin(response) {
   isLoggedIn.value = true;
   userInfo.avatar = response.avatar ? response.avatar : 'path/to/avatar.jpg'; // 示例头像路径
-  userInfo.nickname = response.username ? response.username :'用户'; // 示例昵称
+  userInfo.name = response.username ? response.username :'用户'; // 示例昵称
   visible.value = false;
+  store.commit('changeOnline', true);
 }
 
 const handleLogin = () => {
