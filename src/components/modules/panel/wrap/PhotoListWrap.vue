@@ -61,6 +61,10 @@ export default {
       }
     })
 
+    computed(() => {
+      return store.getters.online;
+    });
+
     const selectImg = async (index, list) => {
       const item = list ? list[index] : state.recommendImgList[index]
       store.commit('setShowMoveable', false) // 清理掉上一次的选择

@@ -66,10 +66,6 @@ const store = useStore();
 onMounted(() => {
   checkLoginStatus();
 });
-
-computed(() => {
-  return store.state.online;
-});
 const toggleForm = () => {
   isLogin.value = !isLogin.value;
 };
