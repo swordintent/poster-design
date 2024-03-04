@@ -75,16 +75,13 @@ export default defineComponent({
       loading = true
       page += 1
       api.material.getMyPhoto({ page }).then(({ list }: any) => {
-        if (list.length <= 0) {
-          state.isDone = true;
-          state.imgList = [];
-        } else {
-          state.imgList = state.imgList.concat(list)
-        }
+        list.length <= 0 ? (state.isDone = true) : (state.imgList = state.imgList.concat(list))
         setTimeout(() => {
           loading = false
           console.log("state.imgList", state.imgList);
-          checkHeight(state.imgListRef.getRef(), load)
+          if(state.imgList.length > 0){
+            checkHeight(state.imgListRef.getRef(), load)
+          }
         }, 100)
       })
     }
@@ -122,6 +119,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
+      console.log("userWrap  onMounted")
       load(true)
       nextTick(() => {
         state.tabActiveName = 'pics'
