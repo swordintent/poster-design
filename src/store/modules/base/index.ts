@@ -12,7 +12,7 @@ import _config from '@/config'
 const all = {
   state: {
     loading: null,
-    online: true, // 登录状态，
+    online: false, // 登录状态，
     user: {
       name: localStorage.getItem('username'),
     }, // 储存用户信息
