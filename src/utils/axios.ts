@@ -50,10 +50,10 @@ axios.interceptors.response.use(
 
     // 接口规则：只有正确code为200时返回result结果对象，错误返回整个结果对象
 
-    console.log("authorization", res.headers.authorization)
     if (!res.data) {
       return Promise.reject(res)
     }
+      console.log('res', res)
     if (res.data.code === 401) {
       console.log('登录失效')
       store.commit('changeOnline', false)
