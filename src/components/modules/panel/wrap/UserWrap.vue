@@ -78,6 +78,7 @@ export default defineComponent({
         list.length <= 0 ? (state.isDone = true) : (state.imgList = state.imgList.concat(list))
         setTimeout(() => {
           loading = false
+          console.log("state.imgList", state.imgList);
           if(state.imgList.length > 0){
             checkHeight(state.imgListRef.getRef(), load)
           }
