@@ -68,10 +68,7 @@ onMounted(() => {
 });
 
 computed(() => {
-  // online(){
-  //
-  // }
-  console.log("loginForm listen ", loginForm);
+  return store.state.online;
 });
 const toggleForm = () => {
   isLogin.value = !isLogin.value;
