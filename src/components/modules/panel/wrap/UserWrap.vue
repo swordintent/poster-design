@@ -83,7 +83,7 @@ export default defineComponent({
         setTimeout(() => {
           loading = false
           console.log("state.imgList", state);
-          if(state.imgList.length > 0){
+          if(state.imgList && state.imgList.length > 0){
             checkHeight(state.imgListRef.getRef(), load)
           }
         }, 100)
