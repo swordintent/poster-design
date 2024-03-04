@@ -63,6 +63,7 @@ export default defineComponent({
     let listPage = 0
 
     const load = (init: boolean) => {
+      console.log("user resource loading status", loading)
       if (init) {
         state.imgList = []
         page = 0
