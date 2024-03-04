@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import { ElAvatar,ElDialog, ElMessageBox , ElForm, ElFormItem, ElMessage} from 'element-plus';
 import api from "@/api";
 
@@ -62,9 +62,29 @@ const userInfo = reactive({ avatar: '', nickname: '' });
 const loginForm = reactive({ username: '', password: '' });
 const registerForm = reactive({ username: '', email: '', password: '' });
 
+onMounted(() => {
+  checkLoginStatus();
+});
+
 const toggleForm = () => {
   isLogin.value = !isLogin.value;
 };
+
+const checkLoginStatus = () => {
+  // 这里是示例逻辑，你需要根据实际情况来检查登录状态
+  const token = api.login.getUserInfo().then(response => {
+    if(response.uid > 0){
+      setToLogin(response);
+    }
+  });
+};
+
+function setToLogin(response) {
+  isLoggedIn.value = true;
+  userInfo.avatar = response.avatar ? response.avatar : 'path/to/avatar.jpg'; // 示例头像路径
+  userInfo.nickname = response.username ? response.username :'用户'; // 示例昵称
+  visible.value = false;
+}
 
 const handleLogin = () => {
   // 实现登录逻辑
@@ -77,10 +97,7 @@ const handleLogin = () => {
     console.log('登录成功', response);
     // 检查响应头中的authorization
     if (response.uid > 0) {
-      isLoggedIn.value = true;
-      userInfo.avatar = 'path/to/avatar.jpg'; // 示例头像路径
-      userInfo.nickname = '用户昵称'; // 示例昵称
-      visible.value = false;
+      setToLogin(response);
       ElMessage({
         message: '登录成功' + localStorage.getItem('xp_token'),
         type: 'success',
