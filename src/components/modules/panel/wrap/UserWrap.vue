@@ -6,7 +6,7 @@
  * @LastEditTime: 2023-12-11 11:50:34
 -->
 <template>
-  <div v-if="isLogin" class="wrap" >
+  <div v-if="isLoggedIn" class="wrap" >
     <el-tabs v-model="tabActiveName" :stretch="true" class="tabs" @tab-change="tabChange">
       <el-tab-pane label="资源管理" name="pics"> </el-tab-pane>
       <el-tab-pane label="我的作品" name="design"> </el-tab-pane>
@@ -65,7 +65,7 @@ export default defineComponent({
       listRef: null,
       imgListRef: null,
       tabActiveName: '',
-      isLogin: false,
+      // isLogin: false,
     })
     let loading = false
     let page = 0
@@ -79,7 +79,7 @@ export default defineComponent({
     // 监控 isLoggedIn 的变化，如果登录了，就加载数据
     watch(isLoggedIn, (newVal) => {
       if (newVal) {
-        state.isLogin = true
+        // state.isLogin = true
         load(true)
         nextTick(() => {
           state.tabActiveName = 'pics'
@@ -151,14 +151,14 @@ export default defineComponent({
 
     onMounted(() => {
       if (isLoggedIn.value) {
-        state.isLogin = true;
+        // state.isLogin = true;
         load(true)
         nextTick(() => {
           state.tabActiveName = 'pics'
         })
       }else {
         // 弹出登录框
-        state.isLogin = false;
+        // state.isLogin = false;
         store.dispatch('toggleLoginDialog', true);
         console.log("require login..");
       }
