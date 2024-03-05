@@ -248,6 +248,7 @@ export default defineComponent({
       dragStart,
       tabChange,
       openPSD,
+      isLoggedIn
     }
   },
 })
