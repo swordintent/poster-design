@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, watch, nextTick, ref, onMounted, computed } from 'vue'
-import { ElTabPane, ElTabs,ElText } from 'element-plus'
+import { ElTabPane, ElTabs,ElAlert } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import uploader from '@/components/common/Uploader'
@@ -52,7 +52,7 @@ import useConfirm from '@/common/methods/confirm'
 import {float} from "html2canvas/dist/types/css/property-descriptors/float";
 
 export default defineComponent({
-  components: { uploader, ElTabPane, ElTabs, ElText },
+  components: { uploader, ElTabPane, ElTabs, ElAlert },
   props: ['active'],
   setup(props) {
     const router = useRouter()
