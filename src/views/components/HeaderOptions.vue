@@ -171,7 +171,6 @@ export default defineComponent({
       }
       const { data: content, title, state, width, height } = await api.home[apiName]({ id: id || tempId, type })
       if (content) {
-        console.log("content", content)
         const data = JSON.parse(content)
         this.stateBollean = !!state
         this.title = title
