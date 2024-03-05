@@ -29,8 +29,12 @@
     </div>
   </div>
   <div v-else>
-    <div class="wrap">
-      <el-text class="mx-1 login-text">未登录，请点击右上角登录/注册</el-text>
+    <div class="login-text">
+      <el-alert
+          title="未登录，请点击右上角登录/注册"
+          type="info"
+          center>
+      </el-alert>
     </div>
     </div>
 </template>
@@ -284,17 +288,9 @@ export default defineComponent({
   height: 100%;
 }
 .login-text {
-  margin: 1rem;
-  font-size: 1.5rem;
-  color: #666;
-  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  height: 100vh; /* 设置容器高度为视口高度，确保内容垂直居中 */
 }
 </style>
