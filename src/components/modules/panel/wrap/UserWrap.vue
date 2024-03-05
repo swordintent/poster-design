@@ -78,7 +78,7 @@ export default defineComponent({
     });
 
     const load = (init: boolean) => {
-      console.log("user resource loading status", loading)
+      console.log("user resource loading status1", loading)
       if (init) {
         state.imgList = []
         page = 0
@@ -89,6 +89,7 @@ export default defineComponent({
       }
       loading = true
       page += 1
+      console.log("user resource loading status2", loading)
       api.material.getMyPhoto({ page }).then(({ list }: any) => {
         list.length <= 0 ? (state.isDone = true) : (state.imgList = state.imgList.concat(list))
         setTimeout(() => {
