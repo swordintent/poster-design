@@ -6,7 +6,7 @@
  * @LastEditTime: 2023-12-11 11:50:34
 -->
 <template>
-  <div v-if="isLoggedIn" class="wrap" >
+  <div class="wrap" >
     <el-tabs v-model="tabActiveName" :stretch="true" class="tabs" @tab-change="tabChange">
       <el-tab-pane label="资源管理" name="pics"> </el-tab-pane>
       <el-tab-pane label="我的作品" name="design"> </el-tab-pane>
@@ -28,11 +28,11 @@
       </ul>
     </div>
   </div>
-  <div v-else>
+<!--  <div v-else>
     <div class="wrap">
       aaa
     </div>
-    </div>
+    </div>-->
 </template>
 
 <script lang="ts">
