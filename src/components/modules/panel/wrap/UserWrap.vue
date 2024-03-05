@@ -6,7 +6,7 @@
  * @LastEditTime: 2023-12-11 11:50:34
 -->
 <template>
-  <div class="wrap" >
+  <div v-if="isLogin" class="wrap" >
     <el-tabs v-model="tabActiveName" :stretch="true" class="tabs" @tab-change="tabChange">
       <el-tab-pane label="资源管理" name="pics"> </el-tab-pane>
       <el-tab-pane label="我的作品" name="design"> </el-tab-pane>
@@ -28,11 +28,11 @@
       </ul>
     </div>
   </div>
-<!--  <div v-else>
+  <div v-else>
     <div class="wrap">
       aaa
     </div>
-    </div>-->
+    </div>
 </template>
 
 <script lang="ts">
@@ -45,6 +45,7 @@ import api from '@/api'
 import wImage from '../../widgets/wImage/wImage.vue'
 import setImageData from '@/common/methods/DesignFeatures/setImage'
 import useConfirm from '@/common/methods/confirm'
+import {float} from "html2canvas/dist/types/css/property-descriptors/float";
 
 export default defineComponent({
   components: { uploader, ElTabPane, ElTabs },
@@ -62,6 +63,7 @@ export default defineComponent({
       listRef: null,
       imgListRef: null,
       tabActiveName: '',
+      isLogin: false,
     })
     let loading = false
     let page = 0
@@ -75,6 +77,7 @@ export default defineComponent({
     // 监控 isLoggedIn 的变化，如果登录了，就加载数据
     watch(isLoggedIn, (newVal) => {
       if (newVal) {
+        state.isLogin = true
         load(true)
         nextTick(() => {
           state.tabActiveName = 'pics'
@@ -151,7 +154,8 @@ export default defineComponent({
           state.tabActiveName = 'pics'
         })
       }else {
-        //弹出登录框
+        // 弹出登录框
+        state.isLogin = false;
         store.dispatch('toggleLoginDialog', true);
         console.log("require login..");
       }
