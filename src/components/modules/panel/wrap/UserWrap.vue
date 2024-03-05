@@ -30,7 +30,7 @@
   </div>
   <div v-else>
     <div class="wrap">
-      aaa
+      <el-text class="mx-1 login-text">未登录，请点击右上角登录/注册</el-text>
     </div>
     </div>
 </template>
@@ -282,5 +282,19 @@ export default defineComponent({
 .wrap {
   width: 100%;
   height: 100%;
+}
+.login-text {
+  margin: 1rem;
+  font-size: 1.5rem;
+  color: #666;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 </style>
