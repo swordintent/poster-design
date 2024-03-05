@@ -6,7 +6,7 @@
  * @LastEditTime: 2023-12-11 11:50:34
 -->
 <template>
-  <div class="wrap">
+  <div v-if="isLoggedIn" class="wrap" >
     <el-tabs v-model="tabActiveName" :stretch="true" class="tabs" @tab-change="tabChange">
       <el-tab-pane label="资源管理" name="pics"> </el-tab-pane>
       <el-tab-pane label="我的作品" name="design"> </el-tab-pane>
@@ -28,6 +28,11 @@
       </ul>
     </div>
   </div>
+  <div v-else>
+    <div class="wrap">
+      aaaaa
+    </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -57,18 +62,17 @@ export default defineComponent({
       listRef: null,
       imgListRef: null,
       tabActiveName: '',
+      isLoggedIn: computed(() => {
+        console.log('Computed property is being executed');
+        return store.getters.online;
+      })
     })
     let loading = false
     let page = 0
     let listPage = 0
 
-    let isLoggedIn = computed(() => {
-      console.log('Computed property is being executed');
-      return store.getters.online;
-    });
-
     // 监控 isLoggedIn 的变化，如果登录了，就加载数据
-    watch(isLoggedIn, (newVal) => {
+    watch(state.isLoggedIn, (newVal) => {
       if (newVal) {
         load(true)
         nextTick(() => {
@@ -140,13 +144,13 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      if (isLoggedIn.value) {
+      if (state.isLoggedIn.value) {
         load(true)
         nextTick(() => {
           state.tabActiveName = 'pics'
         })
       }else {
-        //弹出登录框
+        // 弹出登录框
         store.dispatch('toggleLoginDialog', true);
         console.log("require login..");
       }
