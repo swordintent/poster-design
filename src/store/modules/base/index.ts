@@ -39,6 +39,9 @@ const all = {
     fonts: (state: Type.Object) => {
       return state.fonts
     },
+    showLoginDialog: (state: Type.Object) => {
+      return state.showLoginDialog
+    },
   },
   mutations: {
     ...mutations,

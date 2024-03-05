@@ -67,7 +67,7 @@ export default defineComponent({
       return store.getters.online;
     });
 
-    // 监控 isLoggedIn 的变化，如果用户未登录，则显示登录对话框
+    // 监控 isLoggedIn 的变化，如果登录了，就加载数据
     watch(isLoggedIn, (newVal) => {
       if (newVal) {
         load(true)
@@ -140,11 +140,16 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      console.log("userWrap  onMounted")
-      load(true)
-      nextTick(() => {
-        state.tabActiveName = 'pics'
-      })
+      if (isLoggedIn.value) {
+        load(true)
+        nextTick(() => {
+          state.tabActiveName = 'pics'
+        })
+      }else {
+        //弹出登录框
+        store.dispatch('toggleLoginDialog', true);
+        console.log("require login..");
+      }
     })
 
     const selectImg = async (index: number) => {
