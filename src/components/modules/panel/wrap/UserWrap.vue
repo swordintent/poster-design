@@ -290,7 +290,6 @@ export default defineComponent({
   display: flex;
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */
-  width: 100%;
-  height: 100%;
+  height: 80vh;
 }
 </style>
