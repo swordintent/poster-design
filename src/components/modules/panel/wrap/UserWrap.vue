@@ -289,6 +289,6 @@ export default defineComponent({
   display: flex;
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */
-  height: 100vh; /* 设置容器高度为视口高度，确保内容垂直居中 */
+  height: 80vh; /* 设置容器高度为视口高度，确保内容垂直居中 */
 }
 </style>
