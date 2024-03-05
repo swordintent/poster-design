@@ -149,6 +149,7 @@ export default defineComponent({
 
     onMounted(() => {
       if (isLoggedIn.value) {
+        state.isLogin = true;
         load(true)
         nextTick(() => {
           state.tabActiveName = 'pics'
