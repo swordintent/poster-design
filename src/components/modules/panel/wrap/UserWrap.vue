@@ -30,7 +30,7 @@
   </div>
   <div v-else>
     <div class="wrap">
-      aaaaa
+      aaa
     </div>
     </div>
 </template>
@@ -62,17 +62,18 @@ export default defineComponent({
       listRef: null,
       imgListRef: null,
       tabActiveName: '',
-      isLoggedIn: computed(() => {
-        console.log('Computed property is being executed');
-        return store.getters.online;
-      })
     })
     let loading = false
     let page = 0
     let listPage = 0
 
+    const isLoggedIn = computed(() => {
+      console.log('Computed property is being executed');
+      return store.getters.online;
+    });
+
     // 监控 isLoggedIn 的变化，如果登录了，就加载数据
-    watch(state.isLoggedIn, (newVal) => {
+    watch(isLoggedIn, (newVal) => {
       if (newVal) {
         load(true)
         nextTick(() => {
@@ -144,13 +145,13 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      if (state.isLoggedIn.value) {
+      if (isLoggedIn.value) {
         load(true)
         nextTick(() => {
           state.tabActiveName = 'pics'
         })
       }else {
-        // 弹出登录框
+        //弹出登录框
         store.dispatch('toggleLoginDialog', true);
         console.log("require login..");
       }
