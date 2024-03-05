@@ -48,7 +48,7 @@ import useConfirm from '@/common/methods/confirm'
 import {float} from "html2canvas/dist/types/css/property-descriptors/float";
 
 export default defineComponent({
-  components: { uploader, ElTabPane, ElTabs },
+  components: { uploader, ElTabPane, ElTabs, ElText },
   props: ['active'],
   setup(props) {
     const router = useRouter()
