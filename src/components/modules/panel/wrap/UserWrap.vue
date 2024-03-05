@@ -62,10 +62,21 @@ export default defineComponent({
     let page = 0
     let listPage = 0
 
-    computed(() => {
+    let isLoggedIn = computed(() => {
       console.log('Computed property is being executed');
       return store.getters.online;
     });
+
+    // 监控 isLoggedIn 的变化，如果用户未登录，则显示登录对话框
+    watch(isLoggedIn, (newVal) => {
+      if (newVal) {
+        load(true)
+        nextTick(() => {
+          state.tabActiveName = 'pics'
+        })
+      }
+    });
+
     const load = (init: boolean) => {
       console.log("user resource loading status", loading)
       if (init) {

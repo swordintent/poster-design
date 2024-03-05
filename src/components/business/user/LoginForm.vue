@@ -55,8 +55,22 @@ import { ElAvatar,ElDialog, ElMessageBox , ElForm, ElFormItem, ElMessage} from '
 import api from "@/api";
 import { useStore } from 'vuex'
 
+//登录对话框里是否选中登录，false为注册
 const isLogin = ref(true);
+//用户是否是否已登录
 const isLoggedIn = ref(false);
+//登录对话框是否显示
+const visible = ref(false)
+/*computed({
+  get() {
+    console.log("get visible",store.state.showLoginDialog);
+    return store.state.showLoginDialog;
+  },
+  set(value) {
+    console.log("set visible",set);
+    store.dispatch('toggleLoginDialog', value);
+  },
+});*/
 const userInfo = reactive({ avatar: '', name: '' });
 
 const loginForm = reactive({ username: '', password: '' });
@@ -77,15 +91,6 @@ const checkLoginStatus = () => {
     }
   });
 };
-
-const visible = computed({
-  get() {
-    return store.state.showLoginDialog;
-  },
-  set(value) {
-    store.dispatch('toggleLoginDialog', value);
-  },
-});
 
 function setToLogin(response) {
   isLoggedIn.value = true;

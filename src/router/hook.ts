@@ -4,9 +4,9 @@ import store from '@/store'
  export default (router: Type.Object) => {
  
      router.beforeEach((to: Type.Object, from: Type.Object, next: () => void) => {
-         if (to.meta.requireAuth) {
-             store.dispatch('toggleLoginDialog', true);
-         }
+         // if (to.meta.requireAuth && !store.getters.online) {
+         //     store.dispatch('toggleLoginDialog', true);
+         // }
  
          // 有必要时清除残余的loading框
          // store.commit('loading', false);
