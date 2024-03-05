@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, watch, nextTick, ref, onMounted, computed } from 'vue'
-import { ElTabPane, ElTabs } from 'element-plus'
+import { ElTabPane, ElTabs,ElText } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import uploader from '@/components/common/Uploader'
