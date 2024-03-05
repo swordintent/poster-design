@@ -91,14 +91,19 @@ export default defineComponent({
       page += 1
       console.log("user resource loading status2", loading)
       api.material.getMyPhoto({ page }).then(({ list }: any) => {
-        list.length <= 0 ? (state.isDone = true) : (state.imgList = state.imgList.concat(list))
-        setTimeout(() => {
+        if (Array.isArray(list)){
+          list.length <= 0 ? (state.isDone = true) : (state.imgList = state.imgList.concat(list))
+          setTimeout(() => {
+            loading = false
+            console.log("state.imgList", typeof state);
+            if(state.imgList && state.imgList.length > 0){
+              checkHeight(state.imgListRef.getRef(), load)
+            }
+          }, 100)
+        }else{
+          console.log("require login..");
           loading = false
-          console.log("state.imgList", typeof state);
-          if(state.imgList && state.imgList.length > 0){
-            checkHeight(state.imgListRef.getRef(), load)
-          }
-        }, 100)
+        }
       })
     }
     const loadDesign = (init: boolean = false) => {
