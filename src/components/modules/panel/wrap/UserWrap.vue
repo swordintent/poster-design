@@ -30,18 +30,16 @@
   </div>
   <div v-else>
     <div class="login-text">
-      <el-alert
-          title="未登录，请点击右上角登录/注册"
-          type="info"
-          center>
-      </el-alert>
+      <el-text class="mx-1">
+        未登录，请点击右上角登录/注册
+      </el-text>
     </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, watch, nextTick, ref, onMounted, computed } from 'vue'
-import { ElTabPane, ElTabs,ElAlert } from 'element-plus'
+import { ElTabPane, ElTabs,ElText } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import uploader from '@/components/common/Uploader'
@@ -52,7 +50,7 @@ import useConfirm from '@/common/methods/confirm'
 import {float} from "html2canvas/dist/types/css/property-descriptors/float";
 
 export default defineComponent({
-  components: { uploader, ElTabPane, ElTabs, ElAlert },
+  components: { uploader, ElTabPane, ElTabs, ElText },
   props: ['active'],
   setup(props) {
     const router = useRouter()
