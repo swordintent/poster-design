@@ -38,6 +38,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       reject()
       return false
     }
+    console.log(url)
     const regulators = setTimeout(() => {
       browser && browser.close()
       browser = null
