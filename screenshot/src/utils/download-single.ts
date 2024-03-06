@@ -64,6 +64,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
     }
     // 自动模式下页面加载完毕立即截图
     if (prevent === false) {
+      console.log('on loaded..')
       page.on('load', async () => {
         await autoScroll()
         await sleep(wait)
