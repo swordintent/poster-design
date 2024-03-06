@@ -106,7 +106,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
     });
 
     // 地址栏输入网页地址
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30 })
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 })
     console.log('after goto..')
     isPageLoad = true
 
