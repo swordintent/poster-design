@@ -12,7 +12,7 @@ export default {
   COPYRIGHT: 'ShawnPhang - Palxp.cn',
   // API_URL: isDev ? 'http://localhost:9998' : '${API}',
   API_URL: 'http://192.168.50.165:9999', // 服务端地址
-  SCREEN_URL: isDev ? 'http://localhost:7001' : '#{SCREEN_URL}', // 截图服务地址
+  SCREEN_URL: isDev ? 'http://192.168.50.213:7001' : '#{SCREEN_URL}', // 截图服务地址
   IMG_URL: 'http://pic-test.liuhe36.cn/', // 七牛云资源地址
   // ICONFONT_URL: '//at.alicdn.com/t/font_3223711_74mlzj4jdue.css',
   ICONFONT_URL: '//at.alicdn.com/t/font_2717063_ypy8vprc3b.css?display=swap',
