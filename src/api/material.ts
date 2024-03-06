@@ -26,4 +26,4 @@ export const deleteMyPhoto = (params: Type.Object = {}) => fetch('design/user/im
 export const deleteMyWorks = (params: Type.Object = {}) => fetch('design/poster/del', params, 'post')
 
 // 添加图片
-export const addMyPhoto = (params: Type.Object = {}) => fetch('design/user/add_image', params)
+export const addMyPhoto = (params: Type.Object = {}) => fetch('design/user/add_image', params, 'post')
