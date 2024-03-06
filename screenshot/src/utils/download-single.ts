@@ -67,8 +67,10 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       page.on('load', async () => {
         await autoScroll()
         await sleep(wait)
+        console.log('loaded..')
         // await waitTillHTMLRendered(page)
         await page.screenshot({ path, fullPage: true })
+        console.log('screenshot over..')
         // 关闭浏览器
         await browser.close()
         browser = null
