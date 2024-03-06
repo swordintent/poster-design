@@ -47,7 +47,6 @@ import api from '@/api'
 import wImage from '../../widgets/wImage/wImage.vue'
 import setImageData from '@/common/methods/DesignFeatures/setImage'
 import useConfirm from '@/common/methods/confirm'
-import {float} from "html2canvas/dist/types/css/property-descriptors/float";
 
 export default defineComponent({
   components: { uploader, ElTabPane, ElTabs, ElText },
