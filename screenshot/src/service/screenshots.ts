@@ -68,7 +68,7 @@ module.exports = {
         return
       }
       const targetUrl = url + id + `${tempType?'&tempType='+tempType:''}`
-      // console.log(targetUrl, path, thumbPath);
+      console.log(targetUrl, path, thumbPath);
       queueRun(saveScreenshot, targetUrl, { width, height, path, thumbPath, size, quality })
         .then(() => {
           res.setHeader('Content-Type', 'image/jpg')
