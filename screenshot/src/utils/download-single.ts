@@ -38,7 +38,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       reject()
       return false
     }
-    console.log(url)
+    console.log('url', url)
     const regulators = setTimeout(() => {
       browser && browser.close()
       browser = null
@@ -84,7 +84,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
     }
     // 主动模式下注入全局方法
     await page.exposeFunction('loadFinishToInject', async () => {
-      // console.log('-> 开始截图')
+      console.log('-> 开始截图')
       // await page.evaluate(() => document.body.style.background = 'transparent');
       await page.screenshot({ path, omitBackground: true })
       // 关闭浏览器
