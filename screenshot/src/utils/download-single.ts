@@ -46,6 +46,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       resolve()
     }, forceTimeOut * 1000)
 
+    console.log('newPage..')
     // 打开页面
     const page = await browser.newPage()
     // 设置浏览器视窗
@@ -62,6 +63,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       devices = puppeteer.devices[devices]
       devices && (await page.emulate(devices))
     }
+    console.log('prevent..', prevent)
     // 自动模式下页面加载完毕立即截图
     if (prevent === false) {
       console.log('on loaded..')
