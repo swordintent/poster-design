@@ -17,7 +17,7 @@ exports.executablePath = '/opt/google/chrome-unstable/chrome',
 /**
  * 前端绘制页地址
  */
-exports.drawLink = isDev ? 'http://localhost:3000/draw' : 'https://design.palxp.cn/draw'
+exports.drawLink = isDev ? 'http://192.168.50.213:3000/draw' : 'https://design.palxp.cn/draw'
 
 /**
  * 截图并发数上限
