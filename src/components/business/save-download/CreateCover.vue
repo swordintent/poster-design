@@ -40,7 +40,7 @@ export default defineComponent({
         html2canvas(document.getElementById('clone-page'), opts).then((canvas: any) => {
           canvas.toBlob(
             async (blobObj: Blob) => {
-              const result: any = await Qiniu.upload(blobObj, { bucket: 'xp-design', prePath: 'cover/user' })
+              const result: any = await Qiniu.upload(blobObj, { bucket: 'platform-test-1', prePath: 'cover/user' })
               cb(result)
             },
             'image/jpeg',

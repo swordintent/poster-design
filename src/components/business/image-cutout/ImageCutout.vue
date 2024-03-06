@@ -146,7 +146,7 @@ export default defineComponent({
       const buffer = await response.arrayBuffer()
       const file = new File([buffer], `cut_image_${Math.random()}.png`)
       // upload
-      const qnOptions = { bucket: 'xp-design', prePath: 'user' }
+      const qnOptions = { bucket: 'platform-test-1', prePath: 'user' }
       const result = await Qiniu.upload(file, qnOptions)
       const { width, height } = await getImage(file)
       const url = _config.IMG_URL + result.key

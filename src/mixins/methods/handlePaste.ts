@@ -29,7 +29,7 @@ export default () => {
           const imageBlob = await item.getType(item.types[0])
           const file = new File([imageBlob], 'screenshot.png', { type: 'image/png' })
           // 上传图片
-          const qnOptions = { bucket: 'xp-design', prePath: 'user' }
+          const qnOptions = { bucket: 'platform-test-1', prePath: 'user' }
           const result: any = await Qiniu.upload(file, qnOptions)
           const { width, height }: any = await getImage(file)
           const url = _config.IMG_URL + result.key
