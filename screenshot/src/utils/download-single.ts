@@ -32,7 +32,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
         defaultViewport: null,
       })
     } catch (error) {
-      console.log('Puppeteer启动错误！', '窗口大小：', width, height);
+      console.log('Puppeteer启动错误！', '窗口大小：', width, height, error);
     }
     if (!browser) {
       reject()
