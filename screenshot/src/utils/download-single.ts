@@ -9,6 +9,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const puppeteer = require('puppeteer')
 const images = require('images')
 const { executablePath } = require('../configs.ts')
+
 const forceTimeOut = 180 // 强制超时时间，单位：秒
 // 4K规格，总计约830万像素 3840 * 2160 2K规格，总计约830万像素 2048 * 1080
 // const maxPXs = 8294400 
@@ -96,7 +97,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
     })
     console.log('before goto..')
     await page.setRequestInterception(true);
-    page.on('request', req => {
+    page.on('request', (req: any) => {
       console.log('Request URL:', req.url());
       req.continue(); // 继续执行请求
     });
