@@ -94,9 +94,10 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       clearTimeout(regulators)
       resolve()
     })
-
+    console.log('before goto..')
     // 地址栏输入网页地址
     await page.goto(url, { waitUntil: 'domcontentloaded' })
+    console.log('after goto..')
     isPageLoad = true
 
     // 压缩图片
