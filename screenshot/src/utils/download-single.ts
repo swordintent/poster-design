@@ -101,6 +101,10 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       console.log('Request URL:', req.url());
       req.continue(); // 继续执行请求
     });
+    page.on('requestfailed', (req: any) => {
+      console.log('Failed Request URL:', req.url(), 'Error:', req.failure().errorText);
+    });
+
     // 地址栏输入网页地址
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30 })
     console.log('after goto..')
