@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const puppeteer = require('puppeteer')
 const images = require('images')
 const { executablePath } = require('../configs.ts')
-const forceTimeOut = 60 // 强制超时时间，单位：秒
+const forceTimeOut = 180 // 强制超时时间，单位：秒
 // 4K规格，总计约830万像素 3840 * 2160 2K规格，总计约830万像素 2048 * 1080
 // const maxPXs = 8294400 
 const maxPXs = 4211840 // 超出此规格会触发限制器降低dpr，节省服务器资源
