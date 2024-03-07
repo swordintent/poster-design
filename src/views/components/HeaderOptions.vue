@@ -17,9 +17,9 @@
       <div class="divide__line">|</div>
     </template>
     <!-- <el-button @click="draw">绘制(测试)</el-button> -->
-    <el-button size="large" class="primary-btn" :disabled="tempEditing" @click="save(false)">保存</el-button>
+    <el-button size="large" class="primary-btn" :disabled="tempEditing" @click="checkLoginAndAct(save(false))">保存</el-button>
     <copyRight>
-      <el-button :loading="loading" size="large" class="primary-btn" :disabled="tempEditing" plain type="primary" @click="download">下载作品</el-button>
+      <el-button :loading="loading" size="large" class="primary-btn" :disabled="tempEditing" plain type="primary" @click="checkLoginAndAct(download)">下载作品</el-button>
     </copyRight>
   </div>
   <!-- 生成图片组件 -->
@@ -40,8 +40,10 @@ import _config from '@/config'
 import useConfirm from '@/common/methods/confirm'
 import wGroup from '@/components/modules/widgets/wGroup/wGroup.vue'
 import LoginForm from "@/components/business/user/LoginForm.vue";
+import auth from '@/mixins/methods/auth'
 
 export default defineComponent({
+  mixins: [auth],
   components: {LoginForm, copyRight, SaveImage },
   props: ['modelValue'],
   emits: ['change', 'update:modelValue'],
