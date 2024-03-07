@@ -41,6 +41,7 @@ import useConfirm from '@/common/methods/confirm'
 import wGroup from '@/components/modules/widgets/wGroup/wGroup.vue'
 import LoginForm from "@/components/business/user/LoginForm.vue";
 import auth from '@/mixins/methods/auth'
+import {ElMessageBox} from "element-plus";
 
 export default defineComponent({
   mixins: [auth],
@@ -142,6 +143,12 @@ export default defineComponent({
             }
           })
           context.emit('change', { downloadPercent: 100, downloadText: '图片下载中' })
+        } else {
+          state.loading = false
+          await ElMessageBox.alert("请从个人作品中心进入后再下载", "提示", {
+            confirmButtonText: "确定",
+            type: "warning",
+          })
         }
       }, 100)
     }
