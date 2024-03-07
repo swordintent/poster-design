@@ -24,22 +24,6 @@ elementConfig.plugins.forEach((plugin: any) => {
   app.use(plugin)
 })
 
-// main.js 或你的入口文件
-app.directive('check-login', {
-  mounted(el, binding, vnode) {
-    el.addEventListener('click', () => {
-      const store = vnode.dirs[0].instance.$store;
-      if (store.getters.online) {
-        el.dispatchEvent(new CustomEvent('login-passed')); // 触发自定义事件
-      } else {
-        store.dispatch('toggleLoginDialog', true);
-      }
-    });
-  }
-});
-
-
-
 app
   .use(store)
   .use(router)
