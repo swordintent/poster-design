@@ -27,18 +27,17 @@ elementConfig.plugins.forEach((plugin: any) => {
 // main.js 或你的入口文件
 app.directive('check-login', {
   mounted(el, binding, vnode) {
-    const originalClickHandler = binding.value; // 获取原始点击处理函数
-
-    el.addEventListener('click', async () => {
-      const store = vnode.dirs[0].instance.$store; // 获取store
+    el.addEventListener('click', () => {
+      const store = vnode.dirs[0].instance.$store;
       if (store.getters.online) {
-        originalClickHandler(); // 如果用户已登录，执行原始点击逻辑
+        el.dispatchEvent(new CustomEvent('login-passed')); // 触发自定义事件
       } else {
-        store.dispatch('toggleLoginDialog', true); // 否则，弹出登录框
+        store.dispatch('toggleLoginDialog', true);
       }
     });
   }
 });
+
 
 
 app

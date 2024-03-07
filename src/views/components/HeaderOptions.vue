@@ -17,9 +17,9 @@
       <div class="divide__line">|</div>
     </template>
     <!-- <el-button @click="draw">绘制(测试)</el-button> -->
-    <el-button size="large" class="primary-btn" :disabled="tempEditing" v-check-login="save(false)">保存</el-button>
+    <el-button v-check-login size="large" class="primary-btn" :disabled="tempEditing"  @login-passed="save(false)">保存</el-button>
     <copyRight>
-      <el-button :loading="loading" size="large" class="primary-btn" :disabled="tempEditing" plain type="primary" v-check-login="download">下载作品</el-button>
+      <el-button v-check-login :loading="loading" size="large" class="primary-btn" :disabled="tempEditing" plain type="primary"  @login-passed="download">下载作品</el-button>
     </copyRight>
   </div>
   <!-- 生成图片组件 -->
@@ -55,7 +55,10 @@ export default defineComponent({
       title: '',
       loading: false,
     })
-
+    const isLoggedIn = computed(() => {
+      console.log('Computed property is being executed');
+      return store.getters.online;
+    });
     // 保存作品
     async function save(hasCover: boolean = false) {
       // Bugs: 历史操作有问题，且page操作未及时入栈 proxy?.dPageHistory
