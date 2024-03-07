@@ -17,7 +17,7 @@
       <div class="divide__line">|</div>
     </template>
     <!-- <el-button @click="draw">绘制(测试)</el-button> -->
-    <el-button size="large" class="primary-btn" :disabled="tempEditing" @click="save(false)">保存</el-button>
+    <el-button size="large" class="primary-btn" :disabled="tempEditing" v-check-login="save(false)">保存</el-button>
     <copyRight>
       <el-button :loading="loading" size="large" class="primary-btn" :disabled="tempEditing" plain type="primary" @click="download">下载作品</el-button>
     </copyRight>
@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import api from '@/api'
-import { defineComponent, reactive, toRefs, getCurrentInstance, ComponentInternalInstance } from 'vue'
+import {defineComponent, reactive, toRefs, getCurrentInstance, ComponentInternalInstance, computed} from 'vue'
 import { mapGetters, mapActions, useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
 import _dl from '@/common/methods/download'
