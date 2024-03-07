@@ -97,7 +97,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
     })
     console.log('before goto..')
     page.on('console', (msg: any) => {
-      console.log('PAGE LOG:', msg.text());
+      console.log('PAGE LOG:', msg);
     });
     console.log('token1', token);
     await page.evaluateOnNewDocument((token: string) => {
