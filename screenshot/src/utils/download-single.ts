@@ -96,7 +96,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       resolve()
     })
     console.log('before goto..')
-
+    await page.goto('about:blank');
     await page.evaluate((token: string) => {
       localStorage.setItem('xp_token', token);
     }, token);
