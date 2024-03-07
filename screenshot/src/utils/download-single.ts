@@ -100,6 +100,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       console.log('PAGE LOG:', msg.text());
     });
     await page.evaluateOnNewDocument(() => {
+      console.log('token', token);
       localStorage.setItem('xp_token', token);
     });
 
