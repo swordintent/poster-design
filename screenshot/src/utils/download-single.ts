@@ -96,10 +96,9 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       resolve()
     })
     console.log('before goto..')
-    await page.goto('about:blank', { waitUntil: 'domcontentloaded', timeout: 60000 });
-    await page.evaluate((token: string) => {
+    await page.evaluateOnNewDocument(() => {
       localStorage.setItem('xp_token', token);
-    }, token);
+    });
 
     await page.setRequestInterception(true);
     page.on('request', (req: any) => {
