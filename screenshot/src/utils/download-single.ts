@@ -16,7 +16,7 @@ const forceTimeOut = 180 // 强制超时时间，单位：秒
 const maxPXs = 4211840 // 超出此规格会触发限制器降低dpr，节省服务器资源
 const maximum = 5000 // 最大宽高限制，超过截断以防止服务崩溃
 
-const saveScreenshot = async (url: string, { path, width, height, thumbPath, size = 0, quality = 0, prevent, ua, devices, scale, wait }: any) => {
+const saveScreenshot = async (url: string, { path, width, height, thumbPath, size = 0, quality = 0, prevent, ua, devices, scale, wait }: any, sign: string, token: string) => {
   return new Promise(async (resolve: Function, reject: Function) => {
     let isPageLoad = false
     let browser: any = null
@@ -96,6 +96,11 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       resolve()
     })
     console.log('before goto..')
+
+    await page.evaluate((token: string) => {
+      localStorage.setItem('xp_token', token);
+    }, token);
+
     await page.setRequestInterception(true);
     page.on('request', (req: any) => {
       console.log('Request URL:', req.url());

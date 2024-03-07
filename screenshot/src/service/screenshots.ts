@@ -69,7 +69,7 @@ module.exports = {
       }
       const targetUrl = url + id + `${tempType?'&tempType='+tempType:''}`
       console.log(targetUrl, path, thumbPath);
-      queueRun(saveScreenshot, targetUrl, { width, height, path, thumbPath, size, quality })
+      queueRun(saveScreenshot, targetUrl, { width, height, path, thumbPath, size, quality }, id, req.headers['authorization'])
         .then(() => {
           res.setHeader('Content-Type', 'image/jpg')
           // const stats = fs.statSync(path)
@@ -113,7 +113,7 @@ module.exports = {
         res.json({ code: 200, msg: '业务繁忙，等等再来吧~' })
         return
       }
-      queueRun(saveScreenshot, url, { width, height, path, thumbPath, size, quality, prevent, ua, devices, scale, wait }, sign)
+      queueRun(saveScreenshot, url, { width, height, path, thumbPath, size, quality, prevent, ua, devices, scale, wait }, sign, req.headers['authorization'])
         .then(() => {
           if (!res.headersSent) {
             // res.setHeader('Content-Type', 'image/jpg')
