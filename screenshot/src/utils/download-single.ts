@@ -100,10 +100,10 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       console.log('PAGE LOG:', msg.text());
     });
     console.log('token1', token);
-    await page.evaluateOnNewDocument(() => {
+    await page.evaluateOnNewDocument((token: string) => {
       console.log('token2', token);
       localStorage.setItem('xp_token', token);
-    });
+    }, token);
 
     await page.setRequestInterception(true);
     page.on('request', (req: any) => {
@@ -115,7 +115,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
     });
 
     // 地址栏输入网页地址
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 })
+    await page.goto(url, { waitUntil: 'load', timeout: 60000 })
     console.log('after goto..')
     isPageLoad = true
 
