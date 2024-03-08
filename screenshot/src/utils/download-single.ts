@@ -98,7 +98,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       // await page.evaluate(() => document.body.style.background = 'transparent');
       await page.screenshot({ path, omitBackground: true })
       // 关闭浏览器
-      browserClose()
+      await browserClose()
       compress()
       console.log('浏览器已释放');
       clearTimeout(regulators)
