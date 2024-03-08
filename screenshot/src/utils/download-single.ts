@@ -84,9 +84,15 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       })
     }
     // 主动模式下注入全局方法
-    await page.exposeFunction('loadFinishToInject', async (token: string) => {
+    await page.exposeFunction('loadFinishToInject', async () => {
       console.log('-> 开始截图')
-      console.log("in loadFinishToInject token", localStorage.getItem('xp_token'))
+      try {
+        console.log("in loadFinishToInject token", token)
+        console.log("in loadFinishToInject get token", localStorage.getItem('xp_token'))
+      }catch (err) {
+        console.log('loadFinishToInject err', err)
+      }
+
       // await page.evaluate(() => document.body.style.background = 'transparent');
       await page.screenshot({ path, omitBackground: true })
       // 关闭浏览器
@@ -95,7 +101,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       console.log('浏览器已释放');
       clearTimeout(regulators)
       resolve()
-    }, token)
+    })
     console.log('before goto..')
     page.on('console', (msg: any) => {
       console.log('PAGE LOG:', msg);
