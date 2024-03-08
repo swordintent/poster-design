@@ -16,20 +16,24 @@ const forceTimeOut = 180 // 强制超时时间，单位：秒
 const maxPXs = 4211840 // 超出此规格会触发限制器降低dpr，节省服务器资源
 const maximum = 5000 // 最大宽高限制，超过截断以防止服务崩溃
 
-const saveScreenshot = async (url: string, { path, width, height, thumbPath, size = 0, quality = 0, prevent = true, ua, devices, scale, wait }: any, sign: string, token: string) => {
+const saveScreenshot = async (url: string, { path, width, height, thumbPath, size = 0, quality = 0, prevent, ua, devices, scale, wait }: any, sign: string, token: string) => {
   return new Promise(async (resolve: Function, reject: Function) => {
     let isPageLoad = false
     let browser: any = null
     // 格式化浏览器宽高
     width = Number(width).toFixed(0)
     height = Number(height).toFixed(0)
+    const proxyServer = "http://192.168.50.165:8888";
+
     // 启动浏览器
     try {
       browser = await puppeteer.launch({
         headless: true, // !isDev,
         executablePath: isDev ? null : executablePath,
         ignoreHTTPSErrors: true, // 忽略https安全提示
-        args: ['–no-first-run', '–single-process', '–disable-gpu', '–no-zygote', '–disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', `--window-size=${width},${height}`], // 优化配置
+        args: [
+            `--proxy-server=${proxyServer}`,
+            '–no-first-run', '–single-process', '–disable-gpu', '–no-zygote', '–disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', `--window-size=${width},${height}`], // 优化配置
         defaultViewport: null,
       })
     } catch (error) {
