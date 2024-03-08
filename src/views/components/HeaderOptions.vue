@@ -19,7 +19,7 @@
     <!-- <el-button @click="draw">绘制(测试)</el-button> -->
     <el-button size="large" class="primary-btn" :disabled="tempEditing" @click="checkLoginAndAct(save, false)">保存</el-button>
     <copyRight>
-      <el-button :loading="loading" size="large" class="primary-btn" :disabled="tempEditing" plain type="primary" @click="checkLoginAndAct(download)">下载作品</el-button>
+      <el-button :loading="loading" size="large" class="primary-btn" :disabled="tempEditing" plain type="primary" @click="download">下载作品</el-button>
     </copyRight>
   </div>
   <!-- 生成图片组件 -->
