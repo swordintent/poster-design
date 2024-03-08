@@ -104,6 +104,7 @@ export default defineComponent({
       stat != 0 && useNotification('保存成功', '模板内容已变更')
     }
     async function download() {
+      console.log('download....', new Date())
       if (state.loading === true) {
         return
       }
