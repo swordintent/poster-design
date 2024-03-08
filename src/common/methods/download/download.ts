@@ -63,7 +63,7 @@ function fetchImageDataFromUrl(url: string, cb: Function) {
     xhr.responseType = 'blob'
     // 从localStorage获取鉴权token
     const authToken = localStorage.getItem('xp_token'); // 将'your_auth_token_key'替换为你的实际key
-
+    console.log('fetchImageDataFromUrl', url, authToken, 'authToken');
     // 如果token存在，将其添加到请求的Authorization头部
     if (authToken) {
       xhr.setRequestHeader('Authorization', authToken);
