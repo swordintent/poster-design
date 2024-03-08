@@ -86,12 +86,14 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
     // 主动模式下注入全局方法
     await page.exposeFunction('loadFinishToInject', async () => {
       console.log('-> 开始截图')
-      try {
-        console.log("in loadFinishToInject token", token)
-        console.log("in loadFinishToInject get token", localStorage.getItem('xp_token'))
-      }catch (err) {
-        console.log('loadFinishToInject err', err)
-      }
+      await page.evaluate(() => {
+        try {
+          console.log("in loadFinishToInject token", token) // Make sure 'token' is accessible in this context
+          localStorage.setItem('xp_token', token)
+        } catch (err) {
+          console.log('loadFinishToInject err', err)
+        }
+      });
 
       // await page.evaluate(() => document.body.style.background = 'transparent');
       await page.screenshot({ path, omitBackground: true })
