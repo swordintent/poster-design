@@ -109,10 +109,14 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
       console.log('PAGE LOG:', msg);
     });
     console.log('token1', token);
-    await page.evaluateOnNewDocument((token: string) => {
-      console.log('token2', token);
+    // await page.evaluateOnNewDocument((token: string) => {
+    //   console.log('token2', token);
+    //   localStorage.setItem('xp_token', token);
+    // }, token);
+    await page.goto('about:blank');
+    await page.evaluate((token: string) => {
       localStorage.setItem('xp_token', token);
-    }, token);
+    });
 
     await page.setRequestInterception(true);
     page.on('request', (req: any) => {
