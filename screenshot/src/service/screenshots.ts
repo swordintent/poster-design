@@ -41,6 +41,8 @@ module.exports = {
     }
   },
   async screenshots(req: any, res: any) {
+    console.log('screenshots function called at', new Date());
+    console.trace('screenshots function called');
     console.log('screenshots', 'req.query', req.query, 'req.headers', req.headers);
     /**
      * @api {get} api/screenshots 截图
