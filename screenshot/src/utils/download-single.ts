@@ -174,6 +174,7 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
 
     // 异步关闭：Error: Navigation failed because browser has disconnected!
     async function browserClose() {
+      console.log('browserClose', isPageLoad)
       if (isPageLoad) {
         await browser.close()
         browser = null
