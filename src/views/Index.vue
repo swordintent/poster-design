@@ -40,8 +40,8 @@
 
 <script lang="ts">
 import _config from '../config'
-import { defineComponent, reactive, toRefs } from 'vue'
-import { mapActions, mapGetters } from 'vuex'
+import {computed, defineComponent, reactive, toRefs, watch} from 'vue'
+import {mapActions, mapGetters, useStore} from 'vuex'
 import RightClickMenu from '@/components/business/right-click-menu/RcMenu.vue'
 import Moveable from '@/components/business/moveable/Moveable.vue'
 import designBoard from '@/components/modules/layout/designBoard.vue'
@@ -92,6 +92,7 @@ export default defineComponent({
       // window.open(fullPath[0] + '//' + fullPath[2])
       window.open('https://xp.palxp.cn/')
     }
+
     return {
       ...toRefs(state),
       jump2home,
@@ -119,6 +120,7 @@ export default defineComponent({
     document.addEventListener('keydown', this.handleKeydowm, false)
     document.addEventListener('keyup', this.handleKeyup, false)
     this.loadData()
+    this.registLogin();
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.fixTopBarScroll)
@@ -135,6 +137,20 @@ export default defineComponent({
     downloadCancel() {
       this.downloadPercent = 0
       this.isContinue = false
+    },
+    registLogin() {
+      const store = useStore()
+      const isLoggedIn = computed(() => {
+        console.log('Computed property is being executed');
+        return store.getters.online;
+      });
+
+      // 监控 isLoggedIn 的变化，如果登录了，就加载数据
+      watch(isLoggedIn, (newVal) => {
+        if (newVal) {
+          this.loadData();
+        }
+      });
     },
     loadData() {
       // 初始化加载页面

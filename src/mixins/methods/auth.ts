@@ -10,7 +10,7 @@ export default {
                     await action(...args); // 支持异步函数并传递参数
                 }
             } else {
-                store.dispatch('toggleLoginDialog', true);
+                await store.dispatch('toggleLoginDialog', true);
             }
         }
     }
