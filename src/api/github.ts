@@ -7,6 +7,7 @@
  */
 import fetch from '@/utils/axios'
 import Qiniu from "@/common/methods/QiNiu";
+import _config from "@/config";
 
 const cutToken = 'ghp_qpV8PUxwY7as4jc'
 
@@ -37,7 +38,7 @@ async function uploadGit(file: any) {
 
 const putPic = async (file: any) => {
   const newVar = await upload({ file });
-  return newVar.key;
+  return _config.IMG_URL + newVar.key;
 }
 
 const options= { bucket: 'platform-test-1', prePath: 'user' }
