@@ -46,6 +46,7 @@ const upload = ({ file }: any) => {
     const result: any = Qiniu.upload(base64ToFile(file, uuid()), options, (res: Type.Object) => {
       console.log('res', res);
     })
+    console.log('result', result)
     return result;
   }
 }
