@@ -36,11 +36,12 @@ async function uploadGit(file: any) {
 }
 
 const putPic = async (file: any) => {
-  return upload({ file })
+  const newVar = await upload({ file });
+  return newVar.key;
 }
 
 const options= { bucket: 'platform-test-1', prePath: 'user' }
-const upload = ({ file }: any) => {
+const upload = async ({ file }: any) => {
   if (file) {
     console.log('req', file.type, file);
     const result: any = Qiniu.upload(base64ToFile(file, uuid()), options, (res: Type.Object) => {
