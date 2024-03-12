@@ -116,7 +116,6 @@ const saveScreenshot = async (url: string, { path, width, height, thumbPath, siz
 
     await page.setRequestInterception(true);
     page.on('request', (req: any) => {
-      console.log('Request URL:', req.url());
       req.continue(); // 继续执行请求
     });
     page.on('requestfailed', (req: any) => {
