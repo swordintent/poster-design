@@ -42,6 +42,7 @@ const putPic = async (file: any) => {
 const options= { bucket: 'platform-test-1', prePath: 'user' }
 const upload = ({ file }: any) => {
   if (file) {
+    console.log('req', file.type, file);
     const result: any = Qiniu.upload(file, options, (res: Type.Object) => {
       console.log('res', res);
     })
